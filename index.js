@@ -24,6 +24,17 @@ module.exports = {
     ...Object.entries(eslintConfigReactApp.rules).reduce((acc, [key, val]) => {
       return key.startsWith('flowtype/') ? acc : { ...acc, [key]: val }
     }, {}),
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          ['builtin', 'external'],
+          'internal',
+          ['parent', 'sibling', 'index'],
+        ],
+        'newlines-between': 'always',
+      },
+    ],
     'no-restricted-imports': [
       'error',
       {
